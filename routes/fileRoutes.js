@@ -1,13 +1,18 @@
 const express = require('express');
 const router = express.Router();
-const { uploaded,upload } = require('../controllers/fileController');
+const { saveFileToStorage,deleteFilesFromStorage } = require('../controllers/fileController');
 
 
-router.post("/", upload.single('file'), (req, res, next) => {
-  if (!req.file) {
-    return res.status(400).json({ message: "No file uploaded" });
-  }
-  next();
-}, uploaded);
+router.post('/:destination', (req, res) => {
+  const destination = req.params.destination;
+  saveFileToStorage(req, res, destination); 
+});
+
+
+router.delete('/:destination', (req, res) => {
+  const destination = req.params.destination;
+  deleteFilesFromStorage(req, res, destination); 
+});
+
 
 module.exports = router;

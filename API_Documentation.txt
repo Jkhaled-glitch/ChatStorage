@@ -1,0 +1,12 @@
+SAVE FILES
+    // @desc    Save File To Storage
+    // @route   POST /:destination    (destination can be files/images/profiles)
+    // @access  public
+    // @data    {file:file(formData & 'Content-Type': 'multipart/form-data' )}
+
+DELETE FILES
+
+    // @desc    Delete Files From Storage
+    // @route   DELETE /:destination    (destination can be files/images/profiles)
+    // @access  public
+    // @data    {filenames:[] }
