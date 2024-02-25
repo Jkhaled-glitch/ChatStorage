@@ -36,14 +36,13 @@ const saveFileToStorage = async (req, res, destination) => {
 // @data    {filenames:[] }
 
 const deleteFilesFromStorage = async (req, res, destination) => {
-  console.log(req.body)
   const destinationFolder = path.join(parentFolder, destination);
   if (!fs.existsSync(destinationFolder)) {
     return res.status(404).json({ message: 'Destination folder does not exist' });
   }
   const filenames = req.body.filenames;
   if (!filenames || filenames==[]) {
-    return res.status(400).json({ message: 'Filenames can not be Empty' });
+    return res.status(200).json({ message: 'no files to deleted' });
   }
   const basePath = path.join(parentFolder, destination);
 
